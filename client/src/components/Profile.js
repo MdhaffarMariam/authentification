@@ -4,20 +4,20 @@ import { Redirect } from 'react-router-dom'
 import { getprofile } from '../redux/action'
 
 const Profile = () => {
-    const{users, isAuth}=useSelector(state=>state.reducer)
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //   dispatch(getprofile())
-    // }, [])
+    const{users, loading , isAuth}=useSelector(state=>state.reducer)
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(getprofile())
+    }, [])
     console.log(users)
   return (
     <div>
-       {/* {!isAuth? <Redirect to ='/signin'></Redirect> 
-        : */}
-       
-      <h1>hello {users.fullName}</h1>
+       {!isAuth? (<Redirect to ='/signin'></Redirect> )
+        :
+       loading? (<h1>loading...</h1>):
+      (<h1>hello {users.fullName}</h1>)
       
-      
+  }
 
     </div>
   )

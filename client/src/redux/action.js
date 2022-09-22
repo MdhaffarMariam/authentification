@@ -44,7 +44,7 @@ export const loginUser=(user)=>async(dispatch)=>{
 export const getprofile =()=>async(dispatch)=>{
     const token = localStorage.getItem("token")
     const config = {
-        Headers:{
+        headers:{
             Authorization : token
         }
     }
